@@ -1,0 +1,10 @@
+type: tile
+entity: light.example
+name: Reading lamp
+icon: mdi:lamp
+tap_action:
+  action: more-info
+icon_tap_action:
+  action: toggle
+features:
+- type: light-brightness

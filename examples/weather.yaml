@@ -1,0 +1,21 @@
+type: custom:weather-forecast-extended-card
+entity: weather.example
+show_header: true
+daily_forecast: true
+hourly_forecast: true
+orientation: vertical
+show_sun_times: false
+daily_min_gap: 20
+hourly_min_gap: 55
+hourly_extra_attribute: wind_speed
+hourly_extra_attribute_unit: ''
+header_chips:
+- type: attribute
+  attribute: humidity
+  icon: mdi:water-percent
+- type: attribute
+  attribute: wind_speed
+  icon: mdi:weather-windy
+- type: attribute
+  attribute: pressure
+  icon: mdi:gauge

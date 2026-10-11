@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><title>Nightwave fixture</title>
+<style>body{margin:0;background:#170829;color:white;font:16px sans-serif}hui-root{display:block}hui-view{display:block;min-height:900px;padding:20px}ha-card{display:block}</style>
+<script>
+class TestRoot extends HTMLElement{
+ constructor(){super();this.attachShadow({mode:'open'});this.lovelace={config:{views:[{path:'one'},{path:'two'}]}};this.updateComplete=Promise.resolve();}
+ connectedCallback(){this.shadowRoot.innerHTML='<hui-view><h1>Demo dashboard</h1><p>Reusable UI fixture</p><ha-control-switch></ha-control-switch></hui-view>';}
+ updated(){}
+ navigate(path){history.pushState(null,'',path);this.updated(new Map([['_curView',0]]));dispatchEvent(new Event('location-changed'));}
+}
+customElements.define('hui-root',TestRoot);
+customElements.define('ha-control-switch',class extends HTMLElement{constructor(){super();this.attachShadow({mode:'open'});this.shadowRoot.innerHTML='<div class="switch"><div class="background"></div><div class="button"></div></div>';}updated(){}});
+</script><hui-root></hui-root>

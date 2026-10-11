@@ -1,0 +1,31 @@
+/* Opt-in Nightwave primitives for custom card authors. No household selectors. */
+.nw-button{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(135deg,#68408b,#48255f 52%,#302044);color:#f5edff;border:1px solid #c097e33d;border-radius:12px;box-shadow:4px 6px 10px #10051eaa,inset 1px 1px 1px #e7c3ff55,inset -1px -2px 3px #10071e88;transition:transform .22s cubic-bezier(.34,1.45,.48,1),box-shadow .2s,filter .2s}
+.nw-button::after{content:"";position:absolute;inset:-80% -40%;pointer-events:none;background:linear-gradient(110deg,transparent 42%,#ddfff733 50%,transparent 58%);transform:translateX(-110%) rotate(10deg)}
+.nw-button:not(:disabled):active{transform:translateY(2px) scale(.97);box-shadow:inset 3px 4px 8px #10051eaa,inset -1px -1px 2px #bb8ada33}
+.nw-button:not(:disabled):active::after{animation:nw-gleam .5s ease-out}
+@media(hover:hover){.nw-button:not(:disabled):hover{transform:translateY(-2px);filter:brightness(1.12)}.nw-button:not(:disabled):hover::after{animation:nw-gleam .65s ease-out}}
+.nw-button:focus-visible{outline:2px solid #65e9d2;outline-offset:3px}
+.nw-button:is(.active,[aria-pressed=true],[aria-selected=true]){background:linear-gradient(135deg,#423765,#1c5358);border-color:#35f1d288;color:#aaffee;box-shadow:inset 2px 3px 7px #081b2f99,0 0 9px #35f1d222}
+.nw-input,.nw-inset{background:radial-gradient(ellipse at 85% 0%,#31506444,transparent 65%),linear-gradient(145deg,#201330,#301c44);color:#f5edff;border:1px solid #b48ed244;border-radius:12px;box-shadow:inset 5px 6px 14px #0b0416aa,inset -1px -2px 3px #ad78d333,0 1px 1px #d8b6ed22}
+.nw-input{font:inherit;font-size:16px;transition:box-shadow .2s,border-color .2s}
+.nw-input:focus{outline:2px solid #65e9d2;outline-offset:2px;box-shadow:inset 2px 3px 8px #10051e99,0 0 12px #35f1d222}
+.nw-foldout>summary{list-style:none;display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer}
+.nw-foldout>summary::-webkit-details-marker{display:none}
+.nw-foldout>summary::before{content:'›';display:inline-block;font-size:22px;transition:transform .22s}
+.nw-foldout[open]>summary::before{transform:rotate(90deg)}
+.nw-foldout[open]>*:not(summary){animation:nw-reveal .24s ease-out}
+.nw-dialog[open]{animation:nw-sheet .25s cubic-bezier(.2,.7,.3,1);box-shadow:0 18px 60px #090214aa,inset 0 1px #d9b7ed33}
+@media(max-width:600px){.nw-dialog{box-sizing:border-box;max-height:88dvh;overflow:auto;border-radius:22px 22px 0 0;margin:auto auto 0;width:100%;max-width:100%;padding-bottom:max(20px,env(safe-area-inset-bottom))}}
+select.nw-input{transform-origin:top;animation:nw-unfold .22s ease-out}
+@keyframes nw-gleam{to{transform:translateX(110%) rotate(10deg)}}
+@keyframes nw-reveal{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+@keyframes nw-sheet{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes nw-unfold{from{opacity:.6;transform:perspective(500px) rotateX(-8deg)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.nw-button,.nw-button::after,.nw-input,.nw-foldout>summary::before,.nw-foldout[open]>*:not(summary),.nw-dialog[open]{animation:none!important;transition:none!important}.nw-button:not(:disabled):hover,.nw-button:not(:disabled):active{transform:none!important}}
+/* Optional tab indicator and completion feedback, independent of app logic. */
+.nw-tabs{--nw-tab-width:110px;--nw-tab-index:0;position:relative;isolation:isolate;display:flex;gap:4px;padding:4px 4px 8px;overflow-x:auto}
+.nw-tabs>button{position:relative;z-index:1;box-sizing:border-box;flex:0 0 var(--nw-tab-width);width:var(--nw-tab-width);height:44px;border:0;border-radius:12px;background:transparent;color:inherit;font:inherit;cursor:pointer}
+.nw-tabs::before{content:"";position:absolute;left:4px;top:4px;width:var(--nw-tab-width);height:44px;border-radius:12px;background:linear-gradient(135deg,#554471,#225c60);box-shadow:inset 0 1px #bdffea55,0 3px 8px #08031477;transform:translateX(calc(var(--nw-tab-index) * (var(--nw-tab-width) + 4px)));transition:transform .28s cubic-bezier(.2,.7,.3,1);pointer-events:none}
+.nw-complete{animation:nw-check .3s ease-out;text-decoration-color:#69e9d2}
+@keyframes nw-check{from{opacity:.4;transform:translateX(-4px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.nw-tabs::before,.nw-complete{animation:none!important;transition:none!important}}

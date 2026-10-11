@@ -1,0 +1,48 @@
+{
+  "title": "Nightwave",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Nightwave",
+        "description": "Enter dashboard URL prefixes, such as lovelace or dashboard-tablet. Nightwave loads its theme and UI automatically. Remove any older Nightwave dashboard resource to avoid loading it twice.",
+        "data": {
+          "dashboard": "Dashboard URL prefixes (comma separated)"
+        }
+      }
+    },
+    "error": {
+      "invalid_settings": "Check the dashboard URL prefixes."
+    },
+    "abort": {
+      "already_configured": "Nightwave is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Household defaults",
+        "description": "These defaults apply to devices without overrides. Refresh open dashboards after saving.",
+        "data": {
+          "dashboard": "Dashboard URL prefixes (comma separated)",
+          "duration": "Transition duration (ms)",
+          "fan_entities": "Fan switch entity IDs (optional)",
+          "theme": "Theme",
+          "fonts": "Fonts",
+          "depth": "Card depth",
+          "icons": "Sculpted icons",
+          "particles": "Particles and aurora",
+          "transitions": "Liquid transitions",
+          "motion": "Animated device icons",
+          "weather": "Animated weather",
+          "controls": "Custom toggles",
+          "sliders": "Custom sliders",
+          "dial": "Thermostat dial details",
+          "reduced_effects": "Reduced effects"
+        }
+      }
+    },
+    "error": {
+      "invalid_settings": "Check dashboard prefixes, entity IDs and duration (250\u20132500 ms)."
+    }
+  }
+}

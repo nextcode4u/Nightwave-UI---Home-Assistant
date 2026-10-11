@@ -1,0 +1,4 @@
+type: tile
+entity: switch.example
+features:
+- type: toggle

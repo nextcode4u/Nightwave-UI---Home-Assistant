@@ -1,0 +1,19 @@
+{
+  "domain": "nightwave",
+  "name": "Nightwave",
+  "version": "0.3.1",
+  "config_flow": true,
+  "dependencies": [
+    "frontend",
+    "http",
+    "websocket_api"
+  ],
+  "codeowners": [
+    "@nextcode4u"
+  ],
+  "requirements": [],
+  "iot_class": "local_push",
+  "integration_type": "service",
+  "documentation": "https://github.com/nextcode4u/Nightwave-UI---Home-Assistant#readme",
+  "issue_tracker": "https://github.com/nextcode4u/Nightwave-UI---Home-Assistant/issues"
+}

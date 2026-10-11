@@ -1,0 +1,119 @@
+# Remove preset/fan features if your thermostat does not expose those modes.
+type: thermostat
+entity: climate.example
+features:
+- type: climate-hvac-modes
+  style: dropdown
+- type: climate-preset-modes
+  style: dropdown
+- type: climate-fan-modes
+  style: dropdown
+card_mod:
+  style:
+    .: "{% set action = state_attr(config.entity, 'hvac_action') %}\nha-card {\n --nw-climate: {{ '#ffb568' if action\
+      \ in ['heating','preheating'] else '#59e7f5' if action == 'cooling' else '#bda5dc' }};\n --nw-breathe: {{\
+      \ 'nw-breathe 2.8s ease-in-out infinite' if action in ['cooling','heating','preheating'] else 'none' }};\n\
+      \ background:radial-gradient(ellipse at 15% 0%,#71379755,transparent 65%),linear-gradient(140deg,#391950,#20132f\
+      \ 75%);\n border:1px solid #ab7dd94d;box-shadow:8px 12px 22px #080014b3,inset 1px 1px 2px #d39bff44,inset\
+      \ -2px -2px 4px #130622;\n}\n.title{font-size:16px!important;font-weight:600;text-align:left!important;padding:18px\
+      \ 22px 4px!important;line-height:1.5!important}\n.title:after{content:\"{{ (state_attr(config.entity,'current_humidity')\
+      \ | string) + '% humidity' if state_attr(config.entity,'current_humidity') is not none else '' }}\";display:block;color:var(--secondary-text-color);font-size:12px;font-weight:400;margin-top:2px}\n\
+      .more-info{top:12px!important;right:8px!important}\n.container{width:100%;padding:0 10px!important;flex:0\
+      \ 0 auto!important}.container:before{display:none!important}\nhui-card-features{padding:4px 18px 18px!important;--ha-card-feature-gap:10px;--feature-height:44px}\n\
+      ha-state-control-climate-temperature{filter:none!important}\n"
+    ha-state-control-climate-temperature $:
+      .: '
+
+        .container:before{content:"";position:absolute;inset:21% 21% 23%;border-radius:50%;pointer-events:none;background:radial-gradient(circle
+        at 30% 20%,#442254,#20102f 75%);box-shadow:inset 3px 5px 14px #10051fbb,inset -1px -2px 3px #9765c533,0
+        1px 1px #b18dd522}
+
+        .info{gap:6px!important}
+
+        .info>.label:not(.secondary){width:auto;max-width:70%;padding:3px 12px;border:1px solid color-mix(in srgb,var(--nw-climate)
+        25%,transparent);border-radius:20px;background:#10091d66;color:var(--nw-climate)!important;font-size:12px;font-weight:600;overflow:visible;display:flex;align-items:center;gap:7px;min-height:20px}
+
+        .info>.label:not(.secondary):before{content:"";width:6px;height:6px;flex-shrink:0;border-radius:50%;background:var(--nw-climate);box-shadow:0
+        0 7px var(--nw-climate);animation:var(--nw-breathe)}
+
+        ha-big-number{font-weight:500;letter-spacing:-2px;text-shadow:0 2px 8px #0005}
+
+        ha-big-number:before{content:"SET TO";display:block;font-size:9px;letter-spacing:1.5px;text-align:center;color:#b8a0ce;margin:1px
+        0 3px}
+
+        .secondary{color:#d4c5e4!important;font-size:13px!important}
+
+        .secondary:before{content:"Now ";font-size:12px;color:#b8a0ce}
+
+        .buttons{gap:18px!important;bottom:7px!important}
+
+        .buttons ha-outlined-icon-button{--md-outlined-icon-button-container-width:58px;--md-outlined-icon-button-container-height:48px;color:var(--nw-climate)}
+
+        ha-control-circular-slider::after{opacity:.07!important}
+
+        @keyframes nw-breathe{0%,100%{opacity:.5;box-shadow:0 0 3px var(--nw-climate)}50%{opacity:1;box-shadow:0
+        0 10px var(--nw-climate)}}
+
+        @media(prefers-reduced-motion:reduce){.info>.label:before{animation:none!important}}
+
+
+        ha-big-number{font-family:var(--nightwave-number-font)!important;font-variant-numeric:tabular-nums lining-nums;}ha-big-number:before{font-family:var(--ha-font-family-body)}'
+      ha-control-circular-slider $: '
+
+        /* Instrument-style circular slider: native geometry and interaction preserved. */
+
+        .background{stroke:#9672b1!important;opacity:.27!important;stroke-width:18px!important;filter:drop-shadow(0
+        2px 2px #090315)}
+
+        .arc{stroke-width:16px!important}
+
+        .arc-colored{opacity:.95!important;filter:drop-shadow(0 -1px 0 #dcfcff88) drop-shadow(0 2px 0 #133348) drop-shadow(0
+        0 5px #35d8ff44)}
+
+        .target-border{stroke-width:30px!important;filter:drop-shadow(0 1px 0 #d7faffaa) drop-shadow(0 3px 0 #133445)
+        drop-shadow(0 5px 4px #090218aa)}
+
+        .target{stroke-width:19px!important;stroke:#e7ffff!important;filter:drop-shadow(0 -1px 0 white) drop-shadow(0
+        2px 1px #3baebccc)}
+
+        .current{stroke-width:5px!important;opacity:.9!important}
+
+        .arc-active:focus-visible{stroke-width:22px!important;filter:drop-shadow(0 0 5px #fff)}
+
+        #nw-dial-detail{pointer-events:none}
+
+        @media(prefers-reduced-motion:reduce){path{transition:none!important}}
+
+        '
+      ha-outlined-icon-button $: '
+
+        button.icon-button{border-radius:16px!important;background:linear-gradient(140deg,#644082,#352044)!important;border:1px
+        solid #bc8ae74d!important;box-shadow:3px 5px 9px #10031faa,inset 1px 1px 1px #e5bdff44,inset -1px -1px 2px
+        #12061f99;color:var(--nw-climate)!important;transition:transform .3s cubic-bezier(.34,1.45,.48,1),box-shadow
+        .2s,filter .2s!important}
+
+        @media(hover:hover){button.icon-button:not(:disabled):hover{transform:translateY(-2px);filter:brightness(1.15)}}
+
+        button.icon-button:not(:disabled):active{transform:translateY(2px) scale(.94);box-shadow:inset 2px 3px 6px
+        #130922aa}
+
+        button.icon-button:focus-visible{outline:2px solid var(--nw-climate);outline-offset:3px}
+
+        @media(prefers-reduced-motion:reduce){button.icon-button{transition:none!important;transform:none!important}}
+
+        '
+    hui-card-features $:
+      .: :host{grid-template-columns:repeat(2,minmax(0,1fr))!important}.wide{grid-column:1 / -1}
+      hui-card-feature $:
+        hui-climate-fan-modes-card-feature $:
+          .: ':host:before{content:"FAN";display:block;font-size:10px;letter-spacing:1.2px;color:#bba3cf;margin:0
+            0 6px 4px}ha-control-select-menu{border-radius:14px;box-shadow:inset 2px 3px 5px #0f071b66,0 1px 1px
+            #ad7aca22;--control-select-menu-background-color:#3d254f;--control-select-menu-border-radius:14px}'
+        hui-climate-hvac-modes-card-feature $:
+          .: ':host:before{content:"MODE";display:block;font-size:10px;letter-spacing:1.2px;color:#bba3cf;margin:0
+            0 6px 4px}ha-control-select-menu{border-radius:14px;box-shadow:inset 2px 3px 5px #0f071b66,0 1px 1px
+            #ad7aca22;--control-select-menu-background-color:#3d254f;--control-select-menu-border-radius:14px}'
+        hui-climate-preset-modes-card-feature $:
+          .: ':host:before{content:"PRESET";display:block;font-size:10px;letter-spacing:1.2px;color:#bba3cf;margin:0
+            0 6px 4px}ha-control-select-menu{border-radius:14px;box-shadow:inset 2px 3px 5px #0f071b66,0 1px 1px
+            #ad7aca22;--control-select-menu-background-color:#3d254f;--control-select-menu-border-radius:14px}'

@@ -1,0 +1,8 @@
+type: custom:nightwave-details
+title: Motion & auto lighting
+# Collapsed by default. Native entity controls retain their normal behavior.
+entities:
+  - entity: binary_sensor.example_motion
+    name: Motion
+  - entity: automation.example_lighting
+    name: Automatic lighting

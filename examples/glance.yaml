@@ -1,0 +1,7 @@
+type: custom:nightwave-glance
+weather: weather.example
+batteries:
+  - sensor.example_battery
+# Optional. Omit either setting if you do not have a matching entity or view.
+power_entity: binary_sensor.example_power_warning
+system_path: /lovelace/system

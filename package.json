@@ -1,0 +1,11 @@
+{
+  "name": "nightwave-ui",
+  "version": "0.3.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "license": "MIT"
+}
