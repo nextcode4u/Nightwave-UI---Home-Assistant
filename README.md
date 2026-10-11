@@ -1,6 +1,6 @@
 # Nightwave UI
 
-Purple and cyan motion, sculpted icons, an organic liquid view reveal, and animated weather for Home Assistant. Version **0.3.2**. One repository contains the theme, UI, optional settings integration, and device settings card. It does not contain a household dashboard.
+Purple and cyan motion, sculpted icons, an organic liquid view reveal, and animated weather for Home Assistant. Version **0.3.2**. One repository contains the theme, UI, optional settings integration, and device settings card.
 
 [Releases and downloads](https://github.com/nextcode4u/Nightwave-UI---Home-Assistant/releases) · [Report an issue](https://github.com/nextcode4u/Nightwave-UI---Home-Assistant/issues)
 
@@ -38,7 +38,7 @@ The bundle applies this styling automatically to native dashboard sliders. The d
 
 Use [`examples/weather.yaml`](examples/weather.yaml) with your own forecast-capable weather entity to reproduce the full weather card. These still images show the styling. Clouds, wind, icons and transitions animate when motion is enabled.
 
-See the [live UI comparison](docs/visual-parity.md) for what matches and what is deliberately excluded.
+See the [reusable UI features](docs/visual-parity.md) for included styles, controls, and custom-card primitives.
 
 ## Features
 
@@ -96,7 +96,7 @@ Once enabled, these entities use normal Home Assistant entity/service permission
 | Detailed thermostat example | Optional card-mod; supported Mode, Preset, Fan features configured in the example |
 | Navigation button enhancements | Optional button-card |
 
-The Python integration has no third-party requirements. Fonts and their licenses are bundled locally. Dependencies from HACS are not installed automatically. The package does not create household views, device mappings, weather cards, swipe configuration, or automations.
+The Python integration has no third-party requirements. Fonts and their licenses are bundled locally. Dependencies from HACS are not installed automatically. Use the included examples to configure cards and connect your entities.
 
 ### Frontend-only alternative
 
