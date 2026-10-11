@@ -67,8 +67,6 @@ The full package is now a **HACS Integration**, with the UI bundle inside `custo
 type: custom:nightwave-settings
 ```
 
-**Migrating from 0.2:** remove the previous Nightwave JavaScript resource before enabling the integration. Do not load both installations. A duplicate-load guard prevents this version from initializing twice, but an older version does not have that protection. Keep your optional YAML profile theme if you use it.
-
 ### Settings and scope
 
 <img src="docs/images/settings.png" alt="Nightwave settings card with device preferences and household scope" width="390">
