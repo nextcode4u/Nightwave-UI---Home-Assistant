@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
-    <linearGradient id="surface" x2="1" y2="1"><stop stop-color="#633589"/><stop offset="1" stop-color="#20122f"/></linearGradient>
-    <linearGradient id="wave" x2="1" y2="1"><stop stop-color="#b3fff0"/><stop offset="1" stop-color="#35d8d0"/></linearGradient>
+    <linearGradient id="surface" x2="100%" y2="100%"><stop stop-color="#633589"/><stop offset="1" stop-color="#20122f"/></linearGradient>
+    <linearGradient id="wave" x2="100%" y2="100%"><stop stop-color="#b3fff0"/><stop offset="1" stop-color="#35d8d0"/></linearGradient>
   </defs>
   <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#surface)" stroke="#a176be" stroke-width="2"/>
   <path d="M60 173V83Q60 69 70 82L184 177Q196 190 196 174V83" fill="none" stroke="#110920" stroke-width="21" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 5)"/>
