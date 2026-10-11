@@ -28,4 +28,4 @@ class NightwaveDetails extends HTMLElement{
 if(!customElements.get('nightwave-details'))customElements.define('nightwave-details',NightwaveDetails);
 window.customCards.push({type:'nightwave-details',name:'Nightwave details',description:'Collapsed entity controls with animated reveal'});
 // CSS is opt-in for custom card authors; it never searches or modifies household cards.
-window.Nightwave=Object.freeze({version:'0.3.1',styles:Object.freeze({surfaces:nwSurfaceCSS})});
+window.Nightwave=Object.freeze({version:'0.3.2',styles:Object.freeze({surfaces:nwSurfaceCSS})});

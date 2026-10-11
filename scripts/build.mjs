@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 const read=p=>readFileSync(p,'utf8');
 let css=read('assets/fonts/fonts.css').replace(/url\(([^)]+)\)/g,(_,f)=>`url(data:font/woff2;base64,${readFileSync('assets/fonts/'+f).toString('base64')})`);
-let result='/* Nightwave UI 0.3.1\n'+read('LICENSE')+'\nFONT LICENSES\n'+read('assets/fonts/outfit-OFL.txt')+'\n'+read('assets/fonts/spacegrotesk-OFL.txt')+'*/\nif (!window.__nightwaveUIStarted) {\nwindow.__nightwaveUIStarted = true;\n'+read('src/config.js');
+let result='/* Nightwave UI 0.3.2\n'+read('LICENSE')+'\nFONT LICENSES\n'+read('assets/fonts/outfit-OFL.txt')+'\n'+read('assets/fonts/spacegrotesk-OFL.txt')+'*/\nif (!window.__nightwaveUIStarted) {\nwindow.__nightwaveUIStarted = true;\n'+read('src/config.js');
 result+='\n'+read('src/decorators.js');
 result+='\nconst nwSurfaceCSS='+JSON.stringify(read('assets/styles/surfaces.css'))+';\n';
 result+='\n'+read('src/settings-card.js');

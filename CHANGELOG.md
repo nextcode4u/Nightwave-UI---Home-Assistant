@@ -1,3 +1,9 @@
+## 0.3.2 — HACS catalog preparation
+
+- Include original Nightwave brand icons for Home Assistant 2026.3 and newer.
+- Run HACS validation without ignored checks and add Home Assistant hassfest validation.
+- Prepare the default-catalog submission; availability remains subject to HACS review.
+
 ## 0.3.1 — reusable visual parity
 
 - Compare active live resources, theme and card styles with the distribution.

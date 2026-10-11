@@ -1,6 +1,6 @@
 # Nightwave UI
 
-Purple and cyan motion, sculpted icons, an organic liquid view reveal, and animated weather for Home Assistant. Initial release **0.3.1**. One repository contains the theme, UI, optional settings integration, and device settings card. It does not contain a household dashboard.
+Purple and cyan motion, sculpted icons, an organic liquid view reveal, and animated weather for Home Assistant. Version **0.3.2**. One repository contains the theme, UI, optional settings integration, and device settings card. It does not contain a household dashboard.
 
 [Releases and downloads](https://github.com/nextcode4u/Nightwave-UI---Home-Assistant/releases) · [Report an issue](https://github.com/nextcode4u/Nightwave-UI---Home-Assistant/issues)
 
@@ -212,7 +212,7 @@ python tests/test_settings.py
 python tests/test_parity_browser.py
 ```
 
-Canonical theme values live in `assets/theme.json`. The build embeds them and generates `themes/nightwave.yaml` (JSON syntax is valid YAML). It writes identical frontend bundles to `dist/nightwave-ui.js` (standalone) and `custom_components/nightwave/www/nightwave-ui.js` (integration). Commit both outputs whenever source changes. Complete the [release checklist](docs/release.md) before publishing/tagging `v0.3.1`.
+Canonical theme values live in `assets/theme.json`. The build embeds them and generates `themes/nightwave.yaml` (JSON syntax is valid YAML). It writes identical frontend bundles to `dist/nightwave-ui.js` (standalone) and `custom_components/nightwave/www/nightwave-ui.js` (integration). Commit both outputs whenever source changes. Complete the [release checklist](docs/release.md) before publishing/tagging `v0.3.2`.
 
 ## Uninstall
 

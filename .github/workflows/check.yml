@@ -32,5 +32,8 @@ jobs:
       - uses: hacs/action@main
         with:
           category: integration
-          # Custom-repository release; a brands submission is separate.
-          ignore: brands
+  hassfest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: home-assistant/actions/hassfest@master
