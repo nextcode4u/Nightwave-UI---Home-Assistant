@@ -1,6 +1,7 @@
 # Release checklist
 
-- Catalog submission release 0.3.2: full integration and frontend bundle in one repository.
+- Nightwave is listed in the [default HACS integration catalog](https://github.com/hacs/default/blob/master/integration). Users can search for Nightwave directly; no custom repository entry is needed.
+- Current release 0.3.2 packages the full integration and frontend bundle in one repository.
 - Repository and maintainer metadata point to `nextcode4u/Nightwave-UI---Home-Assistant`.
 - Metadata helper: `node scripts/release-metadata.mjs OWNER/REPO @MAINTAINER`. It writes only the manifest; it does not create or publish a repository.
 - Run `npm run build`, `npm run check`, Python validation tests, and all three browser test scripts.

@@ -2,6 +2,10 @@
 
 Purple and cyan motion, sculpted icons, an organic liquid view reveal, and animated weather for Home Assistant. Version **0.3.2**. One repository contains the theme, UI, optional settings integration, and device settings card.
 
+[![Open Nightwave in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=nextcode4u&repository=Nightwave-UI---Home-Assistant&category=integration)
+
+**Available in the default HACS catalog.** Search for **Nightwave** under **Integration**.
+
 [Releases and downloads](https://github.com/nextcode4u/Nightwave-UI---Home-Assistant/releases) · [Report an issue](https://github.com/nextcode4u/Nightwave-UI---Home-Assistant/issues)
 
 ## Preview
@@ -54,11 +58,11 @@ See the [reusable UI features](docs/visual-parity.md) for included styles, contr
 
 ## Install: one package
 
-The full package is now a **HACS Integration**, with the UI bundle inside `custom_components/nightwave/www/`. Setup loads that bundle automatically; no resource URL editing is needed. Add this repository to HACS as a custom **Integration**. This is an experimental community package; it is not yet listed in the default HACS catalog. Backend setup has been tested on Home Assistant 2026.10.1, with desktop/mobile browser checks. A full installation/update cycle through HACS remains to be verified.
+Nightwave is listed in the **default HACS catalog** as an **Integration**. The download includes the theme and UI bundle inside `custom_components/nightwave/www/`. Integration setup loads the bundle automatically; no resource URL editing is needed.
 
-### Full installation
+### Install through HACS
 
-1. Open **HACS → ⋮ → Custom repositories**, add `https://github.com/nextcode4u/Nightwave-UI---Home-Assistant`, choose **Integration**, then download Nightwave. For a local installation, copy `custom_components/nightwave` into `/config/custom_components/nightwave`.
+1. Open **HACS**, search for **Nightwave**, select **Nightwave — Theme & UI** (type **Integration**), and choose **Download**. You can also use the **Open Nightwave in HACS** button above.
 2. Restart Home Assistant.
 3. Open **Settings → Devices & services → Add integration → Nightwave**. Enter dashboard URL prefixes such as `lovelace` or `dashboard-tablet` (comma separated for multiple dashboards).
 4. Refresh the browser. Add a **Nightwave settings** card from the dashboard card picker, or use:
@@ -66,6 +70,16 @@ The full package is now a **HACS Integration**, with the UI bundle inside `custo
 ```yaml
 type: custom:nightwave-settings
 ```
+
+If Nightwave does not appear, clear filters that limit HACS to downloaded repositories and check again after HACS refreshes its catalog. No custom repository entry is required. See [HACS browsing and download help](https://hacs.xyz/docs/use/repositories/dashboard/).
+
+### Manual installation
+
+Download the latest release and copy `custom_components/nightwave` into `/config/custom_components/nightwave`. Then follow steps 2–4 above.
+
+### Updates
+
+Download available Nightwave updates through HACS, restart Home Assistant, and refresh each browser or Companion App to load the updated UI bundle. Existing installations do not need reinstalling just because Nightwave is now listed in the catalog.
 
 ### Settings and scope
 
@@ -222,4 +236,4 @@ Remove the Nightwave integration from Devices & services, remove its custom card
 
 Original Nightwave code under MIT. See [THIRD_PARTY.md](THIRD_PARTY.md) for font licenses and visual references. No CodeMyUI mask images or third-party card source are included.
 
-HACS documentation: [Integration packaging](https://hacs.dev/docs/publish/integration/), [custom repositories](https://hacs.xyz/docs/faq/custom_repositories/).
+HACS documentation: [Integration packaging](https://hacs.dev/docs/publish/integration/), [browsing and downloading](https://hacs.xyz/docs/use/repositories/dashboard/).
