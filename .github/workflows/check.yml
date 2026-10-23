@@ -26,6 +26,7 @@ jobs:
       - run: python tests/test_browser.py
       - run: python tests/test_settings_browser.py
       - run: python tests/test_parity_browser.py
+      - run: python tests/test_fan_browser.py
   hacs:
     runs-on: ubuntu-latest
     steps:

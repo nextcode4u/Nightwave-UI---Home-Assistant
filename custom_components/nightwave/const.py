@@ -1,6 +1,6 @@
 """Nightwave settings shared by the integration and its optional entities."""
 DOMAIN = "nightwave"
-VERSION = "0.3.2"
+VERSION = "0.3.3"
 FEATURES = {
     "theme": "Theme", "fonts": "Fonts", "depth": "Card depth",
     "icons": "Sculpted icons", "particles": "Particles and aurora",

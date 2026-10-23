@@ -1,10 +1,10 @@
 # Release checklist
 
 - Nightwave is listed in the [default HACS integration catalog](https://github.com/hacs/default/blob/master/integration). Users can search for Nightwave directly; no custom repository entry is needed.
-- Current release 0.3.2 packages the full integration and frontend bundle in one repository.
+- Current release 0.3.3 packages the full integration and frontend bundle in one repository.
 - Repository and maintainer metadata point to `nextcode4u/Nightwave-UI---Home-Assistant`.
 - Metadata helper: `node scripts/release-metadata.mjs OWNER/REPO @MAINTAINER`. It writes only the manifest; it does not create or publish a repository.
-- Run `npm run build`, `npm run check`, Python validation tests, and all three browser test scripts.
+- Run `npm run build`, `npm run check`, Python validation tests, and all four browser test scripts.
 - HACS category is **Integration**. Download includes the complete `custom_components/nightwave` folder and its bundled frontend. Do not register this release as a Dashboard repository.
 - HACS validation has no ignored checks. Nightwave ships its own brand icons in `custom_components/nightwave/brand/` (supported by Home Assistant 2026.3+). Hassfest also runs in CI.
 - Confirm a clean HACS install/update/uninstall against the published GitHub repository before calling it a verified public release.

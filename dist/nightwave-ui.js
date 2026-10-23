@@ -1,4 +1,4 @@
-/* Nightwave UI 0.3.2
+/* Nightwave UI 0.3.3
 MIT License
 
 Copyright (c) 2026 Nightwave contributors
@@ -588,19 +588,24 @@ if(nw.enabled('motion')){
  const pause=`:host([data-nw-motion-paused]) *, :host([data-nw-motion-paused]) *::before,:host([data-nw-motion-paused]) *::after{animation-play-state:paused!important}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}`;
  const icons=`
  :host([data-nw-motion]) :is(ha-icon,ha-svg-icon){display:inline-flex;transform-origin:50% 50%}
- :host([data-nw-motion=fan]) :is(ha-icon,ha-svg-icon){animation:nw-fan 2.4s linear infinite}
+ :host([data-nw-motion=fan]) :is(ha-icon,ha-svg-icon){animation:nw-fan-active 2.4s ease-in-out infinite}
+ :host([data-nw-motion=fan][data-nw-fan-rotor]) :is(ha-icon,ha-svg-icon){animation:nw-fan 2.4s linear infinite}
  :host([data-nw-motion=light]) :is(ha-icon,ha-svg-icon){animation:nw-light 3s ease-in-out infinite}
  :host([data-nw-motion=cooling]) :is(ha-icon,ha-svg-icon){animation:nw-cool 5s linear infinite}
  :host([data-nw-motion=heating]) :is(ha-icon,ha-svg-icon){animation:nw-heat 3.2s ease-in-out infinite}
  :host([data-nw-motion=playing]) :is(ha-icon,ha-svg-icon){animation:nw-playing 2.4s ease-in-out infinite}
  @keyframes nw-fan{to{transform:rotate(360deg)}}
+ @keyframes nw-fan-active{0%,100%{filter:drop-shadow(0 0 1px #76ffe533)}50%{filter:drop-shadow(0 0 6px #76ffe5bb)}}
  @keyframes nw-light{0%,100%{filter:drop-shadow(0 0 1px #76ffe533);transform:scale(1)}50%{filter:drop-shadow(0 0 9px #76ffe5cc);transform:scale(1.13)}}
  @keyframes nw-cool{to{transform:rotate(360deg)}}
  @keyframes nw-heat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1.13);filter:drop-shadow(0 0 3px #ffc08266)}}
  @keyframes nw-playing{0%,100%{transform:scale(1)}25%{transform:scale(1.06)}50%{transform:scale(.98)}75%{transform:scale(1.04)}}
  `+pause;
  function kind(s){if(!s||['unavailable','unknown','off'].includes(s.state))return '';const domain=s.entity_id?.split('.')[0];if(domain==='fan'||nw.fanEntities.includes(s.entity_id))return s.state==='on'?'fan':'';if(domain==='light'||(domain==='switch'&&/light/i.test(s.entity_id+' '+(s.attributes.friendly_name||''))))return s.state==='on'?'light':'';if(domain==='climate')return ['cooling','heating'].includes(s.attributes.hvac_action)?s.attributes.hvac_action:'';if(domain==='media_player')return s.state==='playing'?'playing':'';return '';}
- function icon(e){if(!inside(e)){e.removeAttribute('data-nw-motion');return;}const k=kind(e.stateObj);if(k){style(e,'icons',icons);e.setAttribute('data-nw-motion',k);}else e.removeAttribute('data-nw-motion');}
+ function icon(e){const glyph=e.icon||e.stateObj?.attributes?.icon||e.shadowRoot?.querySelector('ha-icon')?.icon;
+ // Rotate only known blade-only glyphs; mounts and unknown/custom shapes stay upright.
+ e.toggleAttribute('data-nw-fan-rotor',glyph==='mdi:fan');
+ if(!inside(e)){e.removeAttribute('data-nw-motion');return;}const k=kind(e.stateObj);if(k){style(e,'icons',icons);e.setAttribute('data-nw-motion',k);}else e.removeAttribute('data-nw-motion');}
  const surface=`:host([data-nw-active]) ha-card{background-size:165% 165%;animation:nw-surface 9s ease-in-out infinite alternate}@keyframes nw-surface{from{background-position:0% 30%}to{background-position:100% 70%}}`+pause;
  function tile(e){if(!inside(e))return;const s=e.hass?.states[e._config?.entity||e.config?.entity];if(s){style(e,'surface',surface);e.toggleAttribute('data-nw-active',!!kind(s));}}
  const weather=`

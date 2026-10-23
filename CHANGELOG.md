@@ -1,3 +1,9 @@
+## 0.3.3 — fan animation and HACS discovery
+
+- Keep ceiling-fan mounts and other non-rotor fan icons upright; indicate active fans with a pulsing glow. Rotate only recognized blade-only fan icons.
+- Preserve off/unavailable states, reduced-motion settings, and off-screen animation pausing.
+- Add direct HACS installation instructions and an Open in HACS button now that Nightwave is in the default catalog.
+
 ## 0.3.2 — HACS catalog preparation
 
 - Include original Nightwave brand icons for Home Assistant 2026.3 and newer.
