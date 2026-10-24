@@ -1,3 +1,8 @@
+## 0.3.4 — slider tooltip visibility
+
+- Hide brightness value bubbles while idle, including sticky touch-hover states that could display 1% for an off light.
+- Keep native tooltip behavior during dragging and keyboard focus; brightness values and device control are unchanged.
+
 ## 0.3.3 — fan animation and HACS discovery
 
 - Keep ceiling-fan mounts and other non-rotor fan icons upright; indicate active fans with a pulsing glow. Rotate only recognized blade-only fan icons.
