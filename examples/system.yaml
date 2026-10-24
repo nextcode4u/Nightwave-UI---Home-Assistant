@@ -1,0 +1,171 @@
+# Complete dashboard configuration. Requires Nightwave and auto-entities.
+# Install auto-entities separately from HACS (Dashboard category).
+# See README: System dashboard example. No household entity IDs are required.
+title: System
+views:
+  - title: System
+    path: system
+    icon: mdi:server
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Needs attention
+            icon: mdi:alert-circle-outline
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Low batteries
+              show_header_toggle: false
+            show_empty: false
+            filter:
+              include:
+                - domain: sensor
+                  attributes:
+                    device_class: battery
+                    unit_of_measurement: '%'
+                  state: '<= 20'
+                - domain: binary_sensor
+                  attributes:
+                    device_class: battery
+                  state: 'on'
+              exclude:
+                - hidden_by: '*'
+                - entity_id: '*_battery_plus'
+                - entity_id: '*_battery_plus_low'
+                - state: unavailable
+                - state: unknown
+            sort:
+              method: friendly_name
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Unavailable controls
+              show_header_toggle: false
+            show_empty: false
+            filter:
+              include:
+                - domain: light
+                  state: unavailable
+                - domain: switch
+                  state: unavailable
+                - domain: fan
+                  state: unavailable
+                - domain: cover
+                  state: unavailable
+                - domain: climate
+                  state: unavailable
+                - domain: lock
+                  state: unavailable
+              exclude:
+                - hidden_by: '*'
+                - entity_category: config
+                - entity_category: diagnostic
+            sort:
+              method: friendly_name
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Sensors not reporting
+              show_header_toggle: false
+            show_empty: false
+            filter:
+              include:
+                - domain: sensor
+                  attributes:
+                    device_class: battery
+                  state: unavailable
+                - domain: sensor
+                  attributes:
+                    device_class: battery
+                  state: unknown
+                - domain: binary_sensor
+                  attributes:
+                    device_class: motion
+                  state: unavailable
+                - domain: binary_sensor
+                  attributes:
+                    device_class: door
+                  state: unavailable
+              exclude:
+                - hidden_by: '*'
+                - entity_id: '*_battery_plus'
+                - integration: mobile_app
+            sort:
+              method: friendly_name
+      - type: grid
+        cards:
+          - type: heading
+            heading: Batteries
+            icon: mdi:battery-heart-outline
+          - type: custom:auto-entities
+            card:
+              type: custom:nightwave-meters
+              title: Home device batteries
+            card_param: entities
+            show_empty: false
+            filter:
+              include:
+                - domain: sensor
+                  attributes:
+                    device_class: battery
+                    unit_of_measurement: '%'
+              exclude:
+                - hidden_by: '*'
+                - entity_id: '*_battery_plus'
+                - integration: mobile_app
+            sort:
+              method: friendly_name
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Phones & companion devices
+              show_header_toggle: false
+            show_empty: false
+            filter:
+              include:
+                - integration: mobile_app
+                  domain: sensor
+                  attributes:
+                    device_class: battery
+                    unit_of_measurement: '%'
+              exclude:
+                - hidden_by: '*'
+            sort:
+              method: friendly_name
+      - type: grid
+        cards:
+          - type: heading
+            heading: Connections & updates
+            icon: mdi:lan-connect
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Z-Wave devices
+              show_header_toggle: false
+            show_empty: false
+            filter:
+              include:
+                - integration: zwave_js
+                  domain: sensor
+                  entity_id: '*_node_status'
+              exclude:
+                - hidden_by: '*'
+            sort:
+              method: friendly_name
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Available updates
+              show_header_toggle: false
+            show_empty: false
+            filter:
+              include:
+                - domain: update
+                  state: 'on'
+              exclude:
+                - hidden_by: '*'
+            sort:
+              method: friendly_name

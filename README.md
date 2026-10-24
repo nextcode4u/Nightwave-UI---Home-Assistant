@@ -109,6 +109,7 @@ Once enabled, these entities use normal Home Assistant entity/service permission
 | Animated weather landscape | Optional weather-forecast-extended-card with a weather entity |
 | Detailed thermostat example | Optional card-mod; supported Mode, Preset, Fan features configured in the example |
 | Navigation button enhancements | Optional button-card |
+| Automatic System dashboard example | Optional auto-entities |
 
 The Python integration has no third-party requirements. Fonts and their licenses are bundled locally. Dependencies from HACS are not installed automatically. Use the included examples to configure cards and connect your entities.
 
@@ -155,6 +156,25 @@ Set options in the resource URL. Reload the browser after changing options.
 | `fan_entities` | empty | Comma-separated entity IDs for switches that operate fans. Native `fan` entities work automatically. |
 
 For a less powerful phone, try `&particles=false&motion=false`. To disable the liquid reveal entirely, use `&transitions=false`. Operating-system reduced motion disables the reveal and other movement.
+
+## System dashboard example
+
+[`examples/system.yaml`](examples/system.yaml) is a complete dashboard configuration with automatic device lists:
+
+- Home-device battery meters and a separate list for Companion App devices.
+- Low-battery alerts at 20% or less, plus binary battery warnings.
+- Unavailable controls and battery/motion/door sensors that are not reporting.
+- Z-Wave node status and available software/firmware updates.
+
+Install **auto-entities** separately through HACS (type **Dashboard**), then:
+
+1. Create a new empty dashboard in **Settings → Dashboards** and choose its URL, for example `dashboard-system`.
+2. Open it, enter edit mode, and open the **Raw configuration editor**. Replace the empty configuration with `examples/system.yaml` and save. Do not replace an existing dashboard's configuration unless you intend to replace its views; to add just this view, copy the entry beneath `views:` into your existing `views` list instead.
+3. Add the dashboard URL prefix (for example `dashboard-system`) to Nightwave's household dashboard settings and refresh.
+
+No example entity IDs need replacing. Lists update as matching entities are added. Empty result cards hide automatically. Z-Wave status requires enabled node-status entities; sleeping battery devices are normal and are not marked unavailable merely for sleeping. Hidden entities and common Battery Notes duplicate percentage sensors are excluded. Unknown or unavailable battery readings remain visibly unavailable in the meters rather than showing a real 0% charge.
+
+Adjust the filters if you use another battery-wrapper integration or want to exclude particular devices. These cards display Home Assistant's reported states; they do not actively ping devices or guarantee that a cached battery value is fresh. Update rows open the normal entity details; the dashboard does not install updates automatically.
 
 ## Cards and examples
 
